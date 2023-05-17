@@ -3,9 +3,10 @@ const bodyParser = require("body-parser");
 const express = require("express");
 const portNumber = process.argv[2];
 const myPath = path.resolve(__dirname, "templates");
-const LogInCollection = require("./mongo")
-const session = require('express-session')
+const LogInCollection = require("./mongo");
+const session = require('express-session');
 const crypto = require('crypto');
+const MongoDBStore = require('connect-mongodb-session')(session);
 require("dotenv").config({
 path: path.resolve(__dirname, "credentials/.env"),
 });
@@ -23,6 +24,7 @@ const databaseAndCollection = {
 
 const { MongoClient, ServerApiVersion } = require("mongodb");
 const { name } = require("ejs");
+
 async function main() {
   console.log(
     `Web server started and running at http://localhost:${portNumber}`
@@ -46,10 +48,20 @@ async function main() {
 
   const uri = `mongodb+srv://${userName}:${password}@cluster0.ve4q21g.mongodb.net/myFirstDatabase?retryWrites=true&w=majority`;
   const client = new MongoClient(uri, {
-      useNewUrlParser: true,
-      useUnifiedTopology: true,
-      serverApi: ServerApiVersion.v1,
-    });
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+    serverApi: ServerApiVersion.v1,
+  });
+
+  const store = new MongoDBStore({
+    uri: uri,
+    collection: 'sessions' // Name of the collection to store sessions
+  });
+
+  store.on('error', (error) => {
+    console.error('Session store error:', error);
+  });
+
 
 function searchAPI(value){
   return new Promise((resolve, reject) => {
@@ -60,9 +72,9 @@ function searchAPI(value){
     if(array.length > 1){ //if the muscle name is multiple words
       temp = value.replace(" ", "%20")
     } else {
-      temp = value
+      temp = value.toString()
     }
-    console.log(temp)
+    console.log(temp.toString())
     const options = {
       method: 'GET',
       hostname: 'exerciseapi3.p.rapidapi.com',
@@ -111,7 +123,8 @@ app.use(
   session({
     secret: crypto.randomBytes(64).toString('hex'),
     resave: false,
-    saveUninitialized: false
+    saveUninitialized: false,
+    store: store
   })
 );
 
@@ -213,7 +226,7 @@ app.get("/exerciseLogger", (request, response) => {
   response.end();
 });
 
-app.post("/userWorkout", async (request, response) => {
+app.post("/processWorkout", async (request, response) => {
   app.use(express.static(myPath));
   app.set("views", myPath);
   app.set("view engine", "ejs");
