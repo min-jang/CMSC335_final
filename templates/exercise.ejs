@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8" />
+	<title>Exercise</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="header">
+        <a href="/index"><u>HOME</u></a> <h1>Terps Exercise Logger</h1>
+        <hr class="hbreak">
+        <h2>Workout</h2>
+        <hr class="hbreak">
+        <br>
+    </div>
+    <br>
+    <br>
+    <div class="page">
+        <form action="/exercise" method="post">
+            <fieldset>
+                <label><b>Muscle Group: </b>
+                    <select name="muscle">
+                        <option value="trapezius">Trapezius</option>
+                        <option value="deltoid">Deltoid</option>
+                        <option value="pectoralis major">Pectoralis Major</option>
+                        <option value="triceps">Triceps</option>
+                        <option value="biceps">Biceps</option>
+                        <option value="latissimus dorsi">Latissimus Dorsi</option>
+                        <option value="external oblique">External Oblique</option>
+                        <option value="quadriceps">Quadriceps</option>
+                        <option value="hamstrings">Hamstrings</option>
+                        <option value="gluteus medius">Gluteus Medius</option>
+                        <option value="gluteus maximus">Gluteus Maximus</option>
+                </label>
+            </fieldset>
+    
+            <br>
+            <input type="reset" />
+            <input id="submit" type="submit" value="Submit Search"/>
+        </form>
+   
+    </div>
+	
+  
+</body>
+</html>

@@ -1,0 +1,88 @@
+html{
+    height:100%;
+}
+body{
+    background-image: url("eppley.png");
+    background-repeat:no-repeat;
+    background-size:cover;
+    height:70%;
+}
+.page{
+    margin:auto;
+    align-items: center;
+    text-align:center;
+    justify-content: center;
+    display:flex;
+}
+
+h1 {
+    margin: auto;
+    width: 50%;
+    color:black;
+    text-align:center;
+    size: x-large;
+}
+h2{
+    margin: auto;
+    width: 50%;
+    color:black;
+    text-align:center;
+    size: large;
+}
+
+fieldset{
+    display:contents;
+    border-radius: 0.75em;
+    margin:0;
+    padding:0;
+}
+.hbreak{
+    background-color:black;
+    color:black;
+    height:2px;
+    width: 75%;
+
+}
+
+.header{
+    background-color: goldenrod;
+}
+
+caption{
+    background-color: #fff;
+}
+
+table { 
+    background-color: #fff;
+    border-collapse: collapse;
+    width: 80%;
+    max-width: 800px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+
+.histTable{
+    overflow-y:scroll;
+    height:500px;
+    display:block;
+}
+th, td {
+    padding: 8px;
+    border-bottom: 1px solid #ddd;
+    text-align: left;
+}
+
+th {
+    background-color: #f2f2f2;
+    font-weight: bold;
+}
+
+a[href="/index"]{
+    background-color: #fff;
+    padding: 2px;
+}
+
+.signup{
+    background-color: #fff;
+    display: inline-block;
+    padding: 0px;
+}

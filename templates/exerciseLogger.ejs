@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8" />
+	<title>Exercise Logger</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="header">
+        <a href="/index"><u>HOME</u></a>
+        <h1>Terps Exercise Logger</h1>
+        <hr class="hbreak">
+        <h2>Workout</h2>
+        <hr class="hbreak">
+        <br>
+    </div>
+    <br>
+    <br>
+    <div class="page">
+        <form onsubmit="return submission()" action="http://localhost:<%- port %>/processWorkout" method="post">
+            <fieldset>
+                <label><b>How long was your workout (in hours): </b><input type="text" name="time"/></label><br><br>
+                <label><b>Muscles worked: </b><input type="exercise" name="exercise"></label><br><br>
+                <label><b>Additional Comments: </b><br>
+            <textarea rows="5" cols="80" name="backgroundInformation"></textarea></label>
+            </fieldset>
+    
+            <br>
+            <input type="reset" />
+            <input id="submit" type="submit" value="Submit workout"/>
+        </form>
+    </div>
+	
+  
+</body>
+
+<script>
+  function submission() {
+    if(confirm("Are you sure you want to submit your workout?\nYou will not be able to change your information once submitted")) {
+      document.getElementById("submit").submit();
+    } else {
+      return false;
+    }
+  }
+</script>
+</html>
