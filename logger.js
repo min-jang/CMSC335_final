@@ -3,10 +3,9 @@ const bodyParser = require("body-parser");
 const express = require("express");
 const portNumber = process.argv[2];
 const myPath = path.resolve(__dirname, "templates");
-const LogInCollection = require("./mongo");
-const session = require('express-session');
+const LogInCollection = require("./mongo")
+const session = require('express-session')
 const crypto = require('crypto');
-const MongoDBStore = require('connect-mongodb-session')(session);
 require("dotenv").config({
 path: path.resolve(__dirname, "credentials/.env"),
 });
@@ -24,7 +23,6 @@ const databaseAndCollection = {
 
 const { MongoClient, ServerApiVersion } = require("mongodb");
 const { name } = require("ejs");
-
 async function main() {
   console.log(
     `Web server started and running at http://localhost:${portNumber}`
@@ -48,20 +46,10 @@ async function main() {
 
   const uri = `mongodb+srv://${userName}:${password}@cluster0.ve4q21g.mongodb.net/myFirstDatabase?retryWrites=true&w=majority`;
   const client = new MongoClient(uri, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-    serverApi: ServerApiVersion.v1,
-  });
-
-  const store = new MongoDBStore({
-    uri: uri,
-    collection: 'sessions' // Name of the collection to store sessions
-  });
-
-  store.on('error', (error) => {
-    console.error('Session store error:', error);
-  });
-
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+      serverApi: ServerApiVersion.v1,
+    });
 
 function searchAPI(value){
   return new Promise((resolve, reject) => {
@@ -72,16 +60,16 @@ function searchAPI(value){
     if(array.length > 1){ //if the muscle name is multiple words
       temp = value.replace(" ", "%20")
     } else {
-      temp = value.toString()
+      temp = value
     }
-    console.log(temp.toString())
+    console.log(temp)
     const options = {
       method: 'GET',
       hostname: 'exerciseapi3.p.rapidapi.com',
       port: null,
       path: `/search/?primaryMuscle=${temp}`,
-     headers: {
-        'X-RapidAPI-Key': 'd1b3f3cfc0msh68567871d74651cp114dc7jsna83c343d689d',
+      headers: {
+        'X-RapidAPI-Key': '636aa2905cmshdb977daf0d3d225p19ebeejsn5284fd47212c',
         'X-RapidAPI-Host': 'exerciseapi3.p.rapidapi.com'
       }
     };
@@ -123,8 +111,7 @@ app.use(
   session({
     secret: crypto.randomBytes(64).toString('hex'),
     resave: false,
-    saveUninitialized: false,
-    store: store
+    saveUninitialized: false
   })
 );
 
