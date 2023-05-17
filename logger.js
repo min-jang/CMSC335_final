@@ -80,8 +80,8 @@ function searchAPI(value){
       hostname: 'exerciseapi3.p.rapidapi.com',
       port: null,
       path: `/search/?primaryMuscle=${temp}`,
-      headers: {
-        'X-RapidAPI-Key': '9dbab4c385msh6e5aeab4c97ce79p1e690fjsn665133cbf67c',
+     headers: {
+        'X-RapidAPI-Key': 'd1b3f3cfc0msh68567871d74651cp114dc7jsna83c343d689d',
         'X-RapidAPI-Host': 'exerciseapi3.p.rapidapi.com'
       }
     };
