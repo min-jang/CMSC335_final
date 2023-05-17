@@ -13,3 +13,6 @@ API links:
 Youtube Demo Link:
     https://youtu.be/eVADat7XEf0
     
+Rendered website:
+    https://terpexercisetracker.onrender.com
+    
