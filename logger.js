@@ -213,7 +213,7 @@ app.get("/exerciseLogger", (request, response) => {
   response.end();
 });
 
-app.post("/processWorkout", async (request, response) => {
+app.post("/userWorkout", async (request, response) => {
   app.use(express.static(myPath));
   app.set("views", myPath);
   app.set("view engine", "ejs");
