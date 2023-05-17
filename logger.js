@@ -69,9 +69,9 @@ function searchAPI(value){
       port: null,
       path: `/search/?primaryMuscle=${temp}`,
       headers: {
-        'X-RapidAPI-Key': '636aa2905cmshdb977daf0d3d225p19ebeejsn5284fd47212c',
-        'X-RapidAPI-Host': 'exerciseapi3.p.rapidapi.com'
-      }
+		    'X-RapidAPI-Key': 'd1b3f3cfc0msh68567871d74651cp114dc7jsna83c343d689d',
+		    'X-RapidAPI-Host': 'exerciseapi3.p.rapidapi.com'
+	    }
     };
 
     const req = http.request(options, function (res) {
